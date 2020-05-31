@@ -39,8 +39,8 @@ bool buildRequest(int argc, char *argv[], std::string &host,
 }
 
 bool sendRequest(const SocketGuard &soc, const std::string &msg) {
-  auto total = msg.size();
-  auto sent = 0;
+  int total = msg.size();
+  int sent = 0;
   int bytes;
   do {
     bytes = write(soc.get_sockfd(), msg.c_str() + sent, total - sent);
