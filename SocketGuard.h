@@ -5,6 +5,7 @@
 class SocketGuard {
 public:
   SocketGuard() : sockfd(-1){};
+  SocketGuard(const SocketGuard &) = delete;
   bool connect() {
     if (sockfd != -1) {
       std::cerr << "Socket already used";
