@@ -6,6 +6,11 @@ class SocketGuard {
 public:
   SocketGuard() : sockfd(-1){};
   bool connect() {
+    if (sockfd != -1) {
+      std::cerr << "Socket already used";
+      return false;
+    }
+
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1)
       return false;
